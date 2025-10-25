@@ -1,11 +1,32 @@
-<script setup></script>
+<script setup>
+  import {ref} from 'vue';
+
+  const num1 = ref(0);
+  const num2 = ref(0);
+  const sum = ref(0);
+
+  const sendPlus = async () => {
+    const response = await fetch(`http://localhost:7777/plus?num1=${num1.value}&num2=${num2.value}`);
+    console.log(response);
+    const data = await response.json();
+    sum.value = data.sum;
+
+  }
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="plus">
+    <h1>덧셈 기능 만들기</h1>
+    <label>num1: </label><input type="text" v-model="num1">
+    <label>num2: </label><input type="text" v-model="num2">
+    <button @click="sendPlus">더하기</button>
+    <hr>
+    <p>{{ num1 }} + {{num2}} = {{sum}}</p>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .plus {
+    text-align: center;
+  }
+</style>
