@@ -28,8 +28,17 @@ public class CalculatorController {
 
 
 
-    @GetMapping("/plus")
-    public ResponseEntity<CalculatorDTO> plusTwoNumbers(CalculatorDTO calculatorDTO) {
+//    @GetMapping("/plus")
+//    public ResponseEntity<CalculatorDTO> plusTwoNumbers(CalculatorDTO calculatorDTO) {
+//        log.info("calculatorDTO = {}", calculatorDTO);
+//        int result = calculatorService.plusTwoNumbers(calculatorDTO);
+//
+//        calculatorDTO.setSum(result);
+//        return ResponseEntity.ok().body(calculatorDTO);
+//    }
+
+    @PostMapping("/plus")
+    public ResponseEntity<CalculatorDTO> plusTwoNumbers(@RequestBody CalculatorDTO calculatorDTO) {
         log.info("calculatorDTO = {}", calculatorDTO);
         int result = calculatorService.plusTwoNumbers(calculatorDTO);
 
