@@ -11,7 +11,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
 //                .allowedOrigins("*")  //origin 등록(어떤 front 서버든 상관 없이)
 //                .allowedOrigins("http://localhost:5173")
-                .allowedOrigins("http://localhost:8011")
+                // .allowedOrigins("http://localhost:8011")
+                .allowedOrigins("http://localhost:30000") //origin 등록(k8s nodeport 이후)
                 .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 }

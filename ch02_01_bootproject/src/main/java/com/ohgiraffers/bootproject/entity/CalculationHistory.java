@@ -21,7 +21,7 @@ public class CalculationHistory {
     private Long id;
 
     @Column(nullable = false)
-    private Integer num;
+    private Integer num1;
 
     @Column(nullable = false)
     private Integer num2;
@@ -32,8 +32,13 @@ public class CalculationHistory {
     @Column(name="created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    public CalculationHistory(Integer num, Integer num2, Integer result) {
-        this.num = num;
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();  // DB에 들어가기 전(save() 시점)
+    }
+
+    public CalculationHistory(Integer num1, Integer num2, Integer result) {
+        this.num1 = num1;
         this.num2 = num2;
         this.result = result;
     }
